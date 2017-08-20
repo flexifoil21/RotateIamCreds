@@ -5,8 +5,9 @@
 #    Note: This script relies on AWS credentials being stored under ~/.aws/config and ~/.aws/credentials
 #
 # Usage:
-#    ./awsListOldIAMKeys.py <<profile>>
+#    python3 ./awsListOldIAMKeys.py <<profile>> <<numOfDays>>
 #        profile = AWS account you want to run this against
+#        numOfDays = flag key as needing to be rotated if more than this number of days old
 
 import awsIAM
 import sys
@@ -16,4 +17,4 @@ import sys
 #########################
 
 iam = awsIAM.IAM(sys.argv[1])
-iam.listOldIAMKeys()
+iam.listOldIAMKeys(sys.argv[2])
